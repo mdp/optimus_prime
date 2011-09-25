@@ -3,7 +3,7 @@
  * License: MIT
  *
  * I wrote this on a whim on a lazy Sunday afternoon. It's extremely
- * naive, as it simply generate a random odd integer and sees if it
+ * naive, as it simply generates a random odd integer and sees if it
  * can divide evenly into a coprime.
  *
  * If every person on the earth loads this, and runs it continuously,
