@@ -1,4 +1,4 @@
-/* PrimeFinder
+/* OptimusPrime
  * Copyright: Mark Percival, 2011 - <m@mdp.im>
  * License: MIT
  *
@@ -14,33 +14,33 @@
  *
  */
 
-function PrimeFinder(m) {
+function OptimusPrime(m) {
   this.m = m // The Modulus we are attempting to crack
 }
 
-PrimeFinder.HEXARRAY = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
+OptimusPrime.HEXARRAY = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
 
-PrimeFinder.genRandomBigInt = function(bits) {
+OptimusPrime.genRandomBigInt = function(bits) {
   // Just generates simple odd bigints
   var bytes = bits / 8;
   var hexInt = '00'; //Padding with 00
   for(i=0; i < bytes; i++) {
-    hexInt += PrimeFinder.HEXARRAY[PrimeFinder.random(15)];
+    hexInt += OptimusPrime.HEXARRAY[OptimusPrime.random(15)];
     if (i+1 == bytes) {
       // Make sure it's odd
-      hexInt += PrimeFinder.HEXARRAY[PrimeFinder.random(7)*2+1];
+      hexInt += OptimusPrime.HEXARRAY[OptimusPrime.random(7)*2+1];
     } else {
-      hexInt += PrimeFinder.HEXARRAY[PrimeFinder.random(15)];
+      hexInt += OptimusPrime.HEXARRAY[OptimusPrime.random(15)];
     }
   }
   return BigInteger.parse(hexInt,16);
 }
 
-PrimeFinder.random = function(upto) {
+OptimusPrime.random = function(upto) {
   return Math.floor(Math.random() * (upto + 1));
 }
 
-PrimeFinder.prototype.start = function(delay, callback){
+OptimusPrime.prototype.start = function(delay, callback){
   var self = this;
   var result = [];
   this.attempt(callback);
@@ -49,12 +49,12 @@ PrimeFinder.prototype.start = function(delay, callback){
   }, delay);
 }
 
-PrimeFinder.prototype.attemptWith = function(bInt) {
+OptimusPrime.prototype.attemptWith = function(bInt) {
   return this.m.divRem(bInt);
 }
 
-PrimeFinder.prototype.attempt = function(callback){
-  var pr = PrimeFinder.genRandomBigInt(1024);
+OptimusPrime.prototype.attempt = function(callback){
+  var pr = OptimusPrime.genRandomBigInt(1024);
   var result = [];
   result = this.attemptWith(pr);
   if (result[1].isZero()) {
