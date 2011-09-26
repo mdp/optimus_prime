@@ -41,7 +41,7 @@ Striper.prototype.update = function(hexString) {
       stop = "color-stop("+ lastSpan +", "+ rgba + ")";
     }
     span = (1 - lastSpan) / (colors.length - 1 - i);
-    span += Math.random() * (span*0.1); // Give us some randomness of 10%
+    span += Math.random() * (span*0.25); // Give us some randomness of 25%
     span = Math.round(span * 100)/100
     colorCSS.push(start);
     colorCSS.push(stop);
